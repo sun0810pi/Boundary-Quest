@@ -275,6 +275,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.15}
 .ord .why{display:block;font-size:.82rem;color:var(--ink-2);font-weight:400;margin-top:3px}
 .counter{font-size:.82rem;font-weight:700;color:var(--muted);margin-top:8px}
 
+.recap summary{cursor:pointer;font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;gap:6px;align-items:center;list-style:none}.recap summary::-webkit-details-marker{display:none}.recap summary .i{width:15px;height:15px}.recap .m{font-size:.88rem;animation:none}
 .gut{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 .gut button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;border-radius:16px;background:var(--surface-2);border:2px solid transparent;font-weight:600;font-size:.9rem;transition:all .2s}
 .gut button .i{width:22px;height:22px;color:var(--muted)}
@@ -663,7 +664,7 @@ const LEVELS = [
 /* ============ SCENARIOS ============ */
 const SCN = [
 /* ===================== LEVEL 1 · NHẬN DIỆN RANH GIỚI ===================== */
-{id:'s1',think:["Người này muốn gì từ {g}?", "Vì sao người đó muốn giữ bí mật chuyện này?", "Một tấm ảnh mặc đồng phục cho người khác biết thêm điều gì về em?"],cues:["Cho tiền/quà ngay khi mới quen", "Xin ảnh có đồng phục — lộ trường học", "Dặn \"bí mật, đừng kể ai\"", "Tuổi tự nhận trên mạng không kiểm chứng được"],wi:"Nếu người nhắn là một bạn cùng lớp em biết rõ, thì việc dặn \"đừng kể ai\" có còn là điều đáng để ý không?",lv:0,title:'Người bạn trong game',app:{e:'gamepad',t:'Game Cầu Vồng · Chat',s:'KaiPro_2k9 · đang hoạt động'},
+{id:'s1',think:["Người này muốn gì từ {g}?", "Vì sao người đó muốn giữ bí mật chuyện này?", "Ảnh mặc đồng phục cho người lạ biết thêm gì về em?"],cues:["Cho tiền/quà ngay khi mới quen", "Xin ảnh có đồng phục — lộ trường học", "Dặn \"bí mật, đừng kể ai\"", "Trên mạng ai cũng nói dối tuổi được"],wi:"Nếu người nhắn là một bạn cùng lớp em biết rõ, thì việc dặn \"đừng kể ai\" có còn là điều đáng để ý không?",lv:0,title:'Người bạn trong game',app:{e:'gamepad',t:'Game Cầu Vồng · Chat',s:'KaiPro_2k9 · đang hoạt động'},
  story:[
   {g:'read',t:'{g} (12 tuổi) đang chơi game sau giờ học. Một người chơi lạ nhắn tin…'},
   {w:'them',n:'KaiPro_2k9',t:'Ê chơi đỉnh ghê 😮 em bao nhiêu tuổi vậy?'},
@@ -684,10 +685,10 @@ const SCN = [
  safe:'Tiền/quà + xin ảnh + "đừng kể ai" = tín hiệu đỏ. Bí mật làm em khó chịu thì luôn được phép kể.',
  help:['parent','teacher','hotline'], laws:['abuse','privacy','safenet']},
 
-{id:'s2',think:["Ai có quyền quyết định việc đăng ảnh của {f}?", "Đùa vui và chế giễu khác nhau ở điểm nào?"],cues:["Ảnh đăng khi người trong ảnh không biết", "Đòi mật khẩu của người khác", "Doạ \"không chơi chung\" để ép cả nhóm"],wi:"Nếu {f} cũng cười và nói \"không sao\", thì lần sau có cần hỏi ý kiến bạn ấy nữa không?",lv:0,title:'Nhóm lớp sau buổi kỷ yếu',app:{e:'school',t:'Nhóm lớp 6A3',s:'38 thành viên'},
+{id:'s2',think:["Ai có quyền quyết định việc đăng ảnh của {f}?", "Thế nào là đùa vui, thế nào là chê cười bạn?"],cues:["Ảnh đăng khi người trong ảnh không biết", "Đòi mật khẩu của người khác", "Doạ \"không chơi chung\" để ép cả nhóm"],wi:"Nếu {f} cũng cười và nói \"không sao\", thì lần sau có cần hỏi ý kiến bạn ấy nữa không?",lv:0,title:'Nhóm lớp sau buổi kỷ yếu',app:{e:'school',t:'Nhóm lớp 6A3',s:'38 thành viên'},
  story:[
   {g:'hello',t:'Nhóm chat lớp đang sôi nổi sau buổi chụp ảnh kỷ yếu. {f} hôm nay nghỉ ốm.'},
-  {g:'think',t:'Đọc kỹ từng tin nhắn. Lát nữa nhóm sẽ chạm vào những tin thấy chưa ổn — có thể nhiều, có thể ít.'}
+  {g:'think',t:'Cùng đọc tin nhắn trong nhóm nhé.'}
  ],
  task:{type:'flags',q:'Chạm vào những tin nhóm thấy chưa ổn (bao nhiêu cũng được).',msgs:[
   {n:'Hà',t:'Ảnh kỷ yếu lớp mình đẹp ghê 📸',f:false,ex:'Chia sẻ niềm vui chung — không vượt ranh giới ai.'},
@@ -700,7 +701,7 @@ const SCN = [
  safe:'Trước khi đăng ảnh ai: hỏi trước. Bạn nói "không" thì không đăng, đã đăng thì gỡ.',
  help:['teacher','parent','friend'], laws:['image','privacy','dignity']},
 
-{id:'s9',think:["Công việc thả tim có thật sự tạo ra tiền không?", "Vì sao một nơi tuyển việc lại cần mã OTP của mẹ em?", "Câu \"chỉ còn 3 suất\" khiến người đọc cảm thấy thế nào?"],cues:["Hứa nhiều tiền cho việc rất dễ", "Đòi giấy tờ và số điện thoại người thân", "Đòi mã OTP", "Hối thúc: \"chỉ còn 3 suất hôm nay\""],wi:"Nếu trang này có rất nhiều người theo dõi và bình luận khen, nhóm có tin hơn không? Vì sao?",lv:0,title:'Việc làm thêm online',app:{e:'briefcase',t:'Tuyển CTV Học Sinh 💰',s:'Trang · 2.400 người theo dõi'},
+{id:'s9',think:["Công việc thả tim có thật sự tạo ra tiền không?", "Vì sao một nơi tuyển việc lại cần mã OTP của mẹ em?", "Câu \"chỉ còn 3 suất\" làm em thấy phải vội không?"],cues:["Hứa nhiều tiền cho việc rất dễ", "Đòi giấy tờ và số điện thoại người thân", "Đòi mã OTP", "Hối thúc: \"chỉ còn 3 suất hôm nay\""],wi:"Nếu trang này có rất nhiều người theo dõi và bình luận khen, nhóm có tin hơn không? Vì sao?",lv:0,title:'Việc làm thêm online',app:{e:'briefcase',t:'Tuyển CTV Học Sinh 💰',s:'Trang · 2.400 người theo dõi'},
  story:[
   {g:'read',t:'{g} (13 tuổi) thấy một trang quảng cáo "việc làm thêm cho học sinh" và nhắn hỏi thử.'},
   {w:'them',n:'Tuyển CTV',t:'Chào em! Việc siêu nhẹ: thả tim video, mỗi ngày nhận {amt} 🤑'},
@@ -721,7 +722,7 @@ const SCN = [
  safe:'OTP, mật khẩu, ảnh giấy tờ = không bao giờ gửi cho người lạ.',
  help:['parent','teacher'], laws:['fraud','data']},
 
-{id:'s10',think:["Cảm giác của {g} có quan trọng không, khi người kia là người thân?", "Có cách nào vừa lễ phép vừa không phải ôm không?"],cues:["{g} đã né — đó là một lời \"không\" bằng hành động", "Câu \"lớn rồi mà còn ngại\" tạo áp lực", "Người lớn khác bảo \"đừng hỗn\" khiến {g} khó lên tiếng"],wi:"Nếu người muốn ôm là bà ngoại và {g} cũng thích được ôm, thì có khác gì không? Điều gì tạo nên sự khác biệt?",lv:0,title:'Ngày Tết ở nhà ngoại',app:{e:'home',t:'Ngày Tết ở nhà ngoại',s:'Ngoài đời thật'},
+{id:'s10',think:["Người thân muốn ôm, nhưng {g} không thích. Cảm giác của {g} có quan trọng không?", "Có cách nào vừa lễ phép vừa không phải ôm không?"],cues:["{g} đã né — đó là một lời \"không\" bằng hành động", "Câu \"lớn rồi mà còn ngại\" tạo áp lực", "Người lớn khác bảo \"đừng hỗn\" khiến {g} khó lên tiếng"],wi:"Nếu bà ngoại muốn ôm và {g} cũng thích, thì có sao không? Khác nhau ở đâu?",lv:0,title:'Ngày Tết ở nhà ngoại',app:{e:'home',t:'Ngày Tết ở nhà ngoại',s:'Ngoài đời thật'},
  story:[
   {g:'read',t:'Tết này cả họ tụ tập ở nhà ngoại. Một người chú họ của {g} (11 tuổi) lần nào gặp cũng ôm chặt và bắt ngồi lên đùi.'},
   {w:'them',n:'Chú họ',t:'Lại đây chú ôm cái nào! Lớn rồi mà còn ngại hả? 😄'},
@@ -741,10 +742,10 @@ const SCN = [
  safe:'Cơ thể em là của em. Nói "không" với một cái ôm không phải là hỗn.',
  help:['parent','hotline'], laws:['body','abuse']},
 
-{id:'s11',think:["Nếu đọc từng tin riêng lẻ, tin nào có vẻ bình thường?", "Khi đọc tất cả cùng nhau, nhóm thấy điều gì?"],cues:["Tài khoản mới tạo 3 ngày", "Khen \"trưởng thành hơn tuổi\"", "Hỏi lúc em ở nhà một mình", "Rủ sang app riêng để bố mẹ không đọc được"],wi:"Một tin nhắn đơn lẻ có thể vô hại. Vì sao nhìn cả chuỗi tin lại quan trọng?",lv:0,title:'Bạn mới trên mạng',app:{e:'unknown',t:'minh.anh_dethuong',s:'Tài khoản tạo 3 ngày trước'},
+{id:'s11',think:["Tin nào đọc thấy bình thường?", "Tin nào làm nhóm thấy hơi lạ? Vì sao?"],cues:["Tài khoản mới tạo 3 ngày", "Khen \"trưởng thành hơn tuổi\"", "Hỏi lúc em ở nhà một mình", "Rủ sang app riêng để bố mẹ không đọc được"],wi:"Nếu người đó chỉ hỏi \"Em thích môn gì?\" thì nhóm có lo không? Còn khi có cả mấy tin kia thì sao?",lv:0,title:'Bạn mới trên mạng',app:{e:'unknown',t:'minh.anh_dethuong',s:'Tài khoản tạo 3 ngày trước'},
  story:[
   {g:'hello',t:'Một tài khoản lạ kết bạn với {g} và nhắn tin liên tục cả tuần nay.'},
-  {g:'think',t:'Đây là tin nhắn cả tuần qua. Nhóm đọc lần lượt nhé.'}
+  {g:'think',t:'Đây là tin nhắn người đó gửi {g} trong tuần qua.'}
  ],
  task:{type:'flags',q:'Chạm vào những tin nhóm thấy chưa ổn (bao nhiêu cũng được).',msgs:[
   {n:'minh.anh',t:'Em thích môn gì nhất? Anh thích Toán 😄',f:false,ex:'Một câu hỏi bình thường — nhưng hãy để ý các tin còn lại.'},
@@ -758,7 +759,7 @@ const SCN = [
  help:['parent','hotline','teacher'], laws:['abuse','safenet']},
 
 /* ===================== LEVEL 2 · GIAO TIẾP & THƯƠNG LƯỢNG ===================== */
-{id:'s3',think:["Mật khẩu giống với thứ gì trong đời thật?", "Nếu sau này hai bạn giận nhau, chuyện gì có thể xảy ra?"],cues:["Lời nhờ đến từ bạn thân, với lý do rất dễ thương", "Câu \"không tin tui hả?\" khiến từ chối thấy có lỗi"],wi:"Nếu người hỏi mật khẩu là mẹ, nhóm sẽ trả lời khác không? Vì sao?",lv:1,title:'Giữ chuỗi giùm nhau',app:{e:'chat',t:'{f} 🌷',s:'Bạn thân'},
+{id:'s3',think:["Mật khẩu giống với thứ gì trong đời thật?", "Nếu sau này hai bạn giận nhau, chuyện gì có thể xảy ra?"],cues:["Lời nhờ đến từ bạn thân, với lý do rất dễ thương", "Câu \"không tin tui hả?\" làm mình ngại từ chối"],wi:"Nếu người hỏi mật khẩu là mẹ, nhóm sẽ trả lời khác không? Vì sao?",lv:1,title:'Giữ chuỗi giùm nhau',app:{e:'chat',t:'{f} 🌷',s:'Bạn thân'},
  story:[
   {g:'read',t:'{g} sắp về quê một tuần, nơi đó gần như không có mạng. {f} — bạn thân — nhắn tin…'},
   {w:'them',n:'{f}',t:'{g} ơi đưa tui mật khẩu acc của bà nha, tui giữ chuỗi streak giùm 🔥'},
@@ -778,7 +779,7 @@ const SCN = [
  safe:'Mật khẩu chỉ chia sẻ với bố mẹ/người giám hộ — kể cả bạn thân cũng không.',
  help:['parent','friend'], laws:['data','privacy']},
 
-{id:'s4',think:["{g} đã trả lời thế nào ở lần đầu?", "Câu \"không gọi là anh giận đó\" khiến {g} cảm thấy gì?"],cues:["Nhắn lúc 23 giờ", "Hỏi lại sau khi {g} đã từ chối", "Dùng cảm xúc (\"anh giận\") để ép"],wi:"Nếu anh Duy nhắn lúc 4 giờ chiều để hỏi chuyện câu lạc bộ, nhóm thấy có khác không?",lv:1,title:'Cuộc gọi lúc 11 giờ đêm',me:'{g}',app:{e:'device',t:'Anh Duy · CLB Robot',s:'Học lớp 9, cùng câu lạc bộ'},
+{id:'s4',think:["{g} đã trả lời thế nào ở lần đầu?", "Câu \"không gọi là anh giận đó\" làm {g} thấy sao?"],cues:["Nhắn lúc 23 giờ", "Hỏi lại sau khi {g} đã từ chối", "Dùng cảm xúc (\"anh giận\") để ép"],wi:"Nếu anh Duy nhắn lúc 4 giờ chiều để hỏi chuyện câu lạc bộ, nhóm thấy có khác không?",lv:1,title:'Cuộc gọi lúc 11 giờ đêm',me:'{g}',app:{e:'device',t:'Anh Duy · CLB Robot',s:'Học lớp 9, cùng câu lạc bộ'},
  story:[
   {g:'read',t:'{g} (13 tuổi) quen anh Duy ở câu lạc bộ. Mấy hôm nay anh hay nhắn tin khuya.'},
   {w:'sys',t:'23:04'},
@@ -817,7 +818,7 @@ const SCN = [
  safe:'Không ai được ép em chi tiền hay dùng tài khoản của gia đình. Bạn thật không đòi "phí tình bạn".',
  help:['parent','friend'], laws:['data','fraud']},
 
-{id:'s13',think:["Ai có quyền quyết định ảnh của {g} có được đăng hay không?", "\"Đùa xíu thôi\" có làm thay đổi câu trả lời không?"],cues:["Ảnh chụp khi {g} không biết", "\"Ai cũng bị chụp hết\" — lấy số đông làm lý do"],wi:"Nếu ảnh rất đẹp và {g} thích, {f} có cần hỏi trước khi đăng không?",lv:1,title:'Ảnh ngủ gật ở buổi dã ngoại',me:'{g}',app:{e:'camera',t:'{f}',s:'Bạn cùng lớp'},
+{id:'s13',think:["Ai có quyền quyết định ảnh của {g} có được đăng hay không?", "\"Đùa xíu thôi\" có làm thay đổi câu trả lời không?"],cues:["Ảnh chụp khi {g} không biết", "Nói \"ai cũng bị chụp hết\" để mình thôi phản đối"],wi:"Nếu ảnh rất đẹp và {g} thích, {f} có cần hỏi trước khi đăng không?",lv:1,title:'Ảnh ngủ gật ở buổi dã ngoại',me:'{g}',app:{e:'camera',t:'{f}',s:'Bạn cùng lớp'},
  story:[
   {g:'read',t:'Sau buổi dã ngoại, {f} khoe đã chụp được ảnh {g} ngủ há miệng trên xe.'},
   {w:'them',n:'{f}',t:'Ảnh này đỉnh nóc luôn 😂 tối tui đăng story nha'},
@@ -853,7 +854,7 @@ const SCN = [
  help:['parent','teacher','hotline'], laws:['abuse','safenet']},
 
 /* ===================== LEVEL 3 · DẪN DẮT NHÓM ===================== */
-{id:'s5',think:["{f} sẽ cảm thấy thế nào nếu thấy ảnh này?", "Một lượt thả \"haha\" có ảnh hưởng gì không?"],cues:["{f} không có trong nhóm để lên tiếng", "Ảnh bị chế kèm chú thích chê bai", "12 người đã hùa theo — áp lực đám đông"],wi:"Nếu {f} là người tự đăng ảnh chế mình cho vui, nhóm thấy có khác không?",lv:2,title:'Meme về bạn {f}',app:{e:'school',t:'Nhóm lớp 7B1',s:'41 thành viên · {f} không có trong nhóm'},
+{id:'s5',think:["{f} sẽ cảm thấy thế nào nếu thấy ảnh này?", "Một lượt thả \"haha\" có ảnh hưởng gì không?"],cues:["{f} không có trong nhóm để lên tiếng", "Ảnh bị chế kèm chú thích chê bai", "12 người đã hùa theo"],wi:"Nếu {f} là người tự đăng ảnh chế mình cho vui, nhóm thấy có khác không?",lv:2,title:'Meme về bạn {f}',app:{e:'school',t:'Nhóm lớp 7B1',s:'41 thành viên · {f} không có trong nhóm'},
  story:[
   {g:'read',t:'Ai đó vừa đăng một ảnh chế bạn {f} vào nhóm lớp.'},
   {w:'them',n:'Bảo',t:'[Ảnh chế {f} với chú thích "Hoa hậu nhà quê" 🤣]'},
@@ -891,7 +892,7 @@ const SCN = [
  safe:'Nhóm an toàn = được hỏi ý kiến, được lên tiếng, và luôn có đường tìm người lớn.',
  help:['teacher','friend'], laws:['voice','image','code']},
 
-{id:'s15',think:["Mỗi lần một người chuyển tiếp ảnh, điều gì xảy ra?", "{f} cần gì nhất lúc này?"],cues:["Ảnh chụp lén — không có sự đồng ý", "Mọi người rủ nhau chuyển tiếp tiếp"],wi:"Nếu người trong ảnh là một người em không quen, trách nhiệm của em có khác không?",lv:2,title:'Tấm ảnh trong nhóm chat',warn:true,app:{e:'school',t:'Nhóm "Hội hóng chuyện" 👀',s:'23 thành viên'},
+{id:'s15',think:["Mỗi lần có người gửi tiếp ảnh, chuyện gì xảy ra?", "{f} cần gì nhất lúc này?"],cues:["Ảnh chụp lén — không có sự đồng ý", "Mọi người rủ nhau chuyển tiếp tiếp"],wi:"Nếu người trong ảnh là người em không quen, em có nên gửi tiếp không?",lv:2,title:'Tấm ảnh trong nhóm chat',warn:true,app:{e:'school',t:'Nhóm "Hội hóng chuyện" 👀',s:'23 thành viên'},
  story:[
   {g:'read',t:'Tình huống này hơi nhạy cảm. Một bức ảnh chụp lén {f} trong phòng thay đồ đang bị chuyển tiếp khắp các nhóm chat.'},
   {w:'them',n:'Ẩn danh',t:'[Đã chuyển tiếp một ảnh]'},
@@ -929,7 +930,7 @@ const SCN = [
  safe:'Giúp bạn bị bắt nạt: ở bên bạn, giữ bằng chứng, đi cùng bạn gặp người lớn — không trả đũa.',
  help:['teacher','parent','friend'], laws:['dignity','voice','code']},
 
-{id:'s17',think:["Vì sao một người 17 tuổi lại nhắn riêng cho các bạn lớp 5?", "Trưởng clan có trách nhiệm gì với các thành viên?"],cues:["Người lớn tuổi hơn nhắn riêng nhiều bạn nhỏ", "Rủ gặp ngoài đời", "Cho tiền, quà"],wi:"Nếu Bin_99 rủ cả clan đi xem giải đấu, có bố mẹ đi cùng, nhóm thấy sao?",lv:2,title:'Thành viên mới trong clan',app:{e:'gamepad',t:'Clan Ánh Sao ⭐',s:'Em là trưởng clan · 18 thành viên'},
+{id:'s17',think:["Vì sao một người 17 tuổi lại nhắn riêng cho các bạn lớp 5?", "Là trưởng clan, {g} có thể giúp các bạn nhỏ thế nào?"],cues:["Người lớn tuổi hơn nhắn riêng nhiều bạn nhỏ", "Rủ gặp ngoài đời", "Cho tiền, quà"],wi:"Nếu Bin_99 rủ cả clan đi xem giải đấu, có bố mẹ đi cùng, nhóm thấy sao?",lv:2,title:'Thành viên mới trong clan',app:{e:'gamepad',t:'Clan Ánh Sao ⭐',s:'Em là trưởng clan · 18 thành viên'},
  story:[
   {g:'read',t:'{g} là trưởng clan trong một game. Gần đây có thành viên mới "Bin_99" tự nhận 17 tuổi.'},
   {w:'them',n:'Thành viên lớp 5',t:'Chị {g} ơi, anh Bin nhắn riêng rủ em gặp ngoài đời, ảnh bao trà sữa với tặng {amt} 🧋'},
@@ -948,7 +949,7 @@ const SCN = [
  help:['parent','hotline','police'], laws:['abuse','cyber','code']},
 
 /* ===================== LEVEL 4 · NHIỆM VỤ KHỦNG HOẢNG SỐ ===================== */
-{id:'s7',think:["Thông báo \"đăng nhập từ thiết bị lạ\" có nghĩa là gì?", "Việc nào cần làm nhanh nhất?"],cues:["Đăng nhập từ thiết bị lạ", "Tài khoản tự gửi link cho bạn bè"],wi:"Nếu chưa ai báo có link lạ, nhóm có vẫn xử lý ngay khi thấy thông báo không?",lv:3,title:'Tài khoản bị chiếm',app:{e:'bell',t:'Thông báo bảo mật',s:'Hôm nay, 20:17'},
+{id:'s7',think:["\"Đăng nhập từ thiết bị lạ\" nghĩa là gì?", "Việc nào cần làm nhanh nhất?"],cues:["Đăng nhập từ thiết bị lạ", "Tài khoản tự gửi link cho bạn bè"],wi:"Nếu chưa ai báo có link lạ, nhóm có xử lý ngay không?",lv:3,title:'Tài khoản bị chiếm',app:{e:'bell',t:'Thông báo bảo mật',s:'Hôm nay, 20:17'},
  story:[
   {w:'sys',i:'alert',t:'Có lần đăng nhập mới từ thiết bị lạ (Android · không rõ vị trí)'},
   {g:'shock',t:'{g} (14 tuổi) vừa thấy thông báo này. Vài phút sau…'},
@@ -967,7 +968,7 @@ const SCN = [
  safe:'Mật khẩu mạnh + xác thực 2 bước + không bấm link lạ = tài khoản khó bị chiếm.',
  help:['parent','teacher','friend'], laws:['data','cyber']},
 
-{id:'s8',think:["Người nhắn đang muốn {g} cảm thấy gì?", "Vì sao họ dặn \"nói với ai là tao đăng liền\"?"],cues:["Đe doạ kèm thời hạn gấp", "Đòi tiền hoặc thêm ảnh", "Cấm kể với ai — để cô lập {g}"],wi:"Nếu {g} lỡ gửi tiền rồi, có quá muộn để kể với người lớn không?",lv:3,title:'Tin nhắn từ hidden_x',warn:true,app:{e:'unknown',t:'hidden_x',s:'Tài khoản không rõ danh tính'},
+{id:'s8',think:["Người nhắn đang muốn {g} cảm thấy gì?", "Vì sao họ dặn \"nói với ai là tao đăng liền\"?"],cues:["Đe doạ kèm thời hạn gấp", "Đòi tiền hoặc thêm ảnh", "Cấm kể với ai — để {g} thấy chỉ có một mình"],wi:"Nếu {g} lỡ gửi tiền rồi, có quá muộn để kể với người lớn không?",lv:3,title:'Tin nhắn từ hidden_x',warn:true,app:{e:'unknown',t:'hidden_x',s:'Tài khoản không rõ danh tính'},
  story:[
   {g:'read',t:'Tình huống này hơi nặng. Nhóm có thể nghỉ một chút nếu cần nhé. {g} (14 tuổi) nhận được tin nhắn…'},
   {w:'them',n:'hidden_x',t:'Tao có ảnh riêng tư của mày.'},
@@ -1005,7 +1006,7 @@ const SCN = [
  safe:'Không có quà nào cần OTP. Lỡ gửi rồi → báo bố mẹ NGAY.',
  help:['parent','police'], laws:['fraud','data']},
 
-{id:'s19',think:["Ai có thể bị ảnh hưởng bởi tài khoản này?", "Làm sao để mọi người biết đâu là tài khoản thật?"],cues:["Dùng tên và ảnh của {g}", "Nhắn vay tiền nhiều người"],wi:"Nếu tài khoản giả không vay tiền mà chỉ đăng ảnh của {g}, có cần xử lý không?",lv:3,title:'Một tài khoản rất giống em',app:{e:'copy',t:'{g}_official2',s:'Không phải em!'},
+{id:'s19',think:["Ai có thể bị lừa vì tài khoản này?", "Làm sao để mọi người biết đâu là tài khoản thật?"],cues:["Dùng tên và ảnh của {g}", "Nhắn vay tiền nhiều người"],wi:"Nếu tài khoản giả không vay tiền mà chỉ đăng ảnh của {g}, có cần xử lý không?",lv:3,title:'Một tài khoản rất giống em',app:{e:'copy',t:'{g}_official2',s:'Không phải em!'},
  story:[
   {g:'read',t:'{f} báo cho {g}: có một tài khoản dùng ảnh đại diện và tên của {g}, đang đi nhắn tin cho cả lớp.'},
   {w:'them',n:'{g}_official2',t:'Ê cho tui mượn {amt}, mai trả nha. Chuyển vào số tài khoản này nè'},
@@ -1024,7 +1025,7 @@ const SCN = [
  safe:'Bị giả mạo: lưu bằng chứng → cảnh báo mọi người → báo cáo → kể người lớn.',
  help:['parent','friend','teacher'], laws:['fake','fraud','image']},
 
-{id:'s20',think:["Làm sao người này biết {g} đang ở đâu?", "Điều gì cần ưu tiên: xử lý trên mạng hay an toàn ngoài đời?"],cues:["Story gắn vị trí khi {g} vẫn đang ở đó", "Người lạ mô tả quần áo — đang ở rất gần", "Rủ ra \"cổng sau\" gặp riêng"],wi:"Nếu {g} đăng ảnh này sau khi đã về nhà, nguy cơ có khác không?",lv:3,title:'Bình luận dưới story',app:{e:'pin',t:'Bình luận bài đăng của em',s:'Story đăng 20 phút trước'},
+{id:'s20',think:["Làm sao người này biết {g} đang ở đâu?", "Việc gì làm trước: xoá bình luận hay chạy đến chỗ bố mẹ?"],cues:["Story gắn vị trí khi {g} vẫn đang ở đó", "Người lạ mô tả quần áo — đang ở rất gần", "Rủ ra \"cổng sau\" gặp riêng"],wi:"Nếu {g} đợi về nhà rồi mới đăng ảnh, có an toàn hơn không?",lv:3,title:'Bình luận dưới story',app:{e:'pin',t:'Bình luận bài đăng của em',s:'Story đăng 20 phút trước'},
  story:[
   {g:'read',t:'{g} (13 tuổi) vừa đăng story đi chơi công viên, có gắn vị trí.'},
   {w:'them',n:'tk_la_123',t:'Hôm nay em mặc áo xanh ở cổng công viên đẹp ghê 😍'},
@@ -1044,6 +1045,9 @@ const SCN = [
  help:['parent','police','hotline'], laws:['privacy','data','abuse']}
 ];
 
+
+// tình huống "chạm tin nhắn": hiện tin nhắn ngay trong phần câu chuyện
+SCN.forEach(sc=>{if(sc.task.type==='flags')sc.story.push(...sc.task.msgs.map(m=>({w:'them',n:m.n,t:m.t})))});
 
 /* ============ STATE ============ */
 const KEY='bq-v1';
@@ -1141,14 +1145,17 @@ function rStory(){
 }
 
 /* --- think (critical thinking before choosing) --- */
-const GUT=[['ok','friend','Thấy bình thường'],['odd','unknown','Hơi lạ'],['unsure','compass','Chưa chắc']];
+function recapHTML(s){const ms=s.story.filter(m=>!m.g);if(!ms.length)return'';
+  return `<details class="recap" open><summary>${I('chat')} Đoạn tin nhắn</summary><div class="phone" style="margin:8px 0 16px;box-shadow:none"><div class="phone-h"><span class="av">${I(s.app.e)}</span><span><b>${esc(s.app.t)}</b><small>${esc(s.app.s)}</small></span></div><div class="msgs" style="min-height:0;padding:12px;max-height:230px;overflow:auto">${ms.map(msgHTML).join('')}</div></div></details>`}
+const GUT=[['ok','friend','Bình thường'],['odd','unknown','Hơi lạ'],['unsure','compass','Chưa biết']];
 function rThink(){
   const s=cur();
-  $('#stage').innerHTML=`<div class="guide"><img data-pose="think" alt=""><div class="bub"><b class="nm">${MASCOT_NAME}</b>Trước khi chọn, nhóm mình cùng nghĩ một chút nhé. Ở bước này không có đúng hay sai.</div></div>
+  $('#stage').innerHTML=`<div class="guide"><img data-pose="think" alt=""><div class="bub"><b class="nm">${MASCOT_NAME}</b>Khoan chọn vội! Nhóm mình nói chuyện với nhau chút đã. Ở đây không có đúng hay sai đâu.</div></div>
    <div class="card">
-    <span class="sub" style="margin-top:0">Cảm nhận đầu tiên của nhóm</span>
+    ${recapHTML(s)}
+    <span class="sub" style="margin-top:0">Đọc xong, nhóm thấy thế nào?</span>
     <div class="gut">${GUT.map(([k,ic,t])=>`<button class="${P.gut===k?'sel':''}" onclick="P.gut='${k}';rThink()">${I(ic)}${t}</button>`).join('')}</div>
-    <span class="sub">Câu hỏi gợi mở</span>
+    <span class="sub">Cùng trả lời nhé</span>
     <ul class="thinkq">${(s.think||[]).map(q=>`<li>${I('chat')}<span>${esc(q)}</span></li>`).join('')}</ul>
     ${discussBar()}
    </div>`;
@@ -1158,20 +1165,20 @@ function rThink(){
 
 /* --- why (reasons after choosing) --- */
 const REASONS=[
- ['feel','Không muốn người kia buồn, giận','Quan tâm cảm xúc người khác là điều tốt. Nhưng cảm xúc và sự an toàn của em cũng quan trọng không kém.'],
- ['fear','Sợ bị bỏ rơi, bị nói là kỳ hay hỗn','Nỗi sợ này rất thật. Thử để ý: có ai đang dùng nỗi sợ đó để khiến em làm điều em không muốn không?'],
- ['gain','Có lợi: tiền, quà, được khen','Thử tự hỏi: vì sao người này cho mình thứ đó? Họ có thể muốn gì để đổi lại?'],
- ['crowd','Ai cũng làm vậy mà','"Ai cũng làm" có nghĩa là điều đó an toàn hay đúng không? Đám đông cũng có thể sai.'],
- ['unclear','Có chi tiết chưa rõ, cần cẩn thận','Óc hoài nghi tốt! Dừng lại khi có điều chưa rõ là một kỹ năng rất quan trọng.'],
- ['self','Muốn bảo vệ bản thân','Tự bảo vệ mình là quyền của em — không phải ích kỷ hay bất lịch sự.'],
- ['other','Muốn bảo vệ bạn bè, người khác','Nghĩ cho người khác là phẩm chất của người dẫn dắt.'],
- ['adult','Người lớn có thể giúp được','Đúng vậy — em không phải xử lý mọi chuyện một mình.']
+ ['feel','Sợ người kia buồn hay giận','Nghĩ cho người khác là tốt. Nhưng cảm xúc và sự an toàn của em cũng quan trọng.'],
+ ['fear','Sợ bị bỏ rơi hay bị chê','Ai cũng có lúc sợ vậy. Thử để ý: có ai đang làm em sợ để em phải làm theo không?'],
+ ['gain','Được tiền, quà hay lời khen','Thử hỏi: vì sao người đó cho mình? Họ muốn gì lại không?'],
+ ['crowd','Ai cũng làm vậy mà','Nhiều người làm chưa chắc đã đúng hay an toàn.'],
+ ['unclear','Thấy có gì đó chưa ổn','Giỏi lắm! Thấy lạ thì dừng lại — đó là một kỹ năng quan trọng.'],
+ ['self','Muốn giữ an toàn cho mình','Giữ an toàn cho mình là quyền của em, không phải ích kỷ.'],
+ ['other','Muốn bảo vệ bạn bè','Lo cho bạn bè — đó là điều một người dẫn dắt làm.'],
+ ['adult','Người lớn sẽ giúp được','Đúng rồi — em không phải tự lo một mình.']
 ];
 function rWhy(){
   const o=cur().task.opts[P.sel];
-  $('#stage').innerHTML=`<div class="guide"><img data-pose="think" alt=""><div class="bub"><b class="nm">${MASCOT_NAME}</b>Vì sao nhóm chọn cách này? Chọn 1–3 lý do gần nhất với suy nghĩ của nhóm.</div></div>
+  $('#stage').innerHTML=`<div class="guide"><img data-pose="think" alt=""><div class="bub"><b class="nm">${MASCOT_NAME}</b>Vì sao nhóm chọn vậy? Chọn 1–3 ý giống nhóm nhất.</div></div>
    <div class="card"><span class="sub" style="margin-top:0">Nhóm đã chọn</span><div class="chosen">${esc(o.t)}</div>
-    <span class="sub">Lý do của nhóm</span>
+    <span class="sub">Nhóm chọn vì…</span>
     <div class="why">${REASONS.map(([k,t])=>`<button class="${P.why.has(k)?'sel':''}" onclick="togWhy('${k}')">${esc(t)}</button>`).join('')}</div></div>`;
   fillPoses($('#stage'));
   dock(`<button class="btn btn-primary btn-block" ${P.why.size?'':'disabled'} onclick="next()">Xem điều gì xảy ra ${ARROW}</button>`);
@@ -1179,7 +1186,7 @@ function rWhy(){
 function togWhy(k){if(P.why.has(k))P.why.delete(k);else if(P.why.size<3)P.why.add(k);else toast('Chọn tối đa 3 lý do nhé');rWhy()}
 
 /* --- task --- */
-function discussBar(){return `<div class="discuss">${I('chat')} Bàn với nhóm trước khi chọn <button onclick="timer(this)">Hẹn 30 giây</button></div>`}
+function discussBar(){return `<div class="discuss">${I('chat')} Mỗi bạn nói một ý nhé <button onclick="timer(this)">Hẹn 30 giây</button></div>`}
 function timer(b){if(b._t)return;let n=30;b.textContent=n+'s';b._t=setInterval(()=>{n--;b.textContent=n>0?n+'s':'Hết giờ!';if(n<=0){clearInterval(b._t);b._t=null;setTimeout(()=>b.textContent='Hẹn 30 giây',1500)}},1000)}
 function rTask(){
   const t=cur().task;let body='';
@@ -1239,7 +1246,7 @@ function scoreOrder(){const t=cur().task;const k=P.sel.filter((v,i)=>v===i).leng
    {fb:`${k}/5 bước đúng vị trí. ${k===5?'Xử lý khủng hoảng chuẩn chỉnh!':'Thứ tự gợi ý: lấy lại quyền kiểm soát trước, rồi khoá cửa, rồi báo cho mọi người.'}`,order:true})}
 
 /* --- feedback --- */
-const TONE={best:['Lựa chọn rất an toàn!','Tuyệt vời','cheer'],ok:['Một bước tốt — còn cách mạnh hơn','Gần rồi','happy'],learn:['Mình cùng xem lại nhé','Học thêm','protect']};
+const TONE={best:['Lựa chọn rất an toàn!','Tuyệt vời','cheer'],ok:['Tốt rồi, còn cách an toàn hơn nữa','Gần rồi','happy'],learn:['Mình cùng xem lại nhé','Học thêm','protect']};
 function dimsHTML(d){return `<div class="dims">${DIMS.map(x=>`<div class="dim" style="--dc:${x.c}"><div class="e">${I(x.e)}</div><b>${x.name}</b><div class="bar">${[0,1,2].map(j=>`<i class="${d[x.k]>j?'on':''}"></i>`).join('')}</div></div>`).join('')}</div>`}
 function rFb(){
   const s=cur(),R=P.result,[h,tag,ps]=TONE[R.tone];let extra='';
@@ -1250,12 +1257,12 @@ function rFb(){
   $('#stage').innerHTML=`<div class="card">
     <div class="fb-hero"><img data-pose="${ps}" alt=""><div><span class="tone ${R.tone}">${tag}</span><h3>${h}</h3></div></div>
     <p style="margin-top:12px">${esc(R.fb)}</p>${extra}${bestBox}
-    ${P.why.size?`<span class="sub">Lý do nhóm đã cân nhắc</span><ul class="refl">${REASONS.filter(r=>P.why.has(r[0])).map(r=>`<li><b>${esc(r[1])}</b>${esc(r[2])}</li>`).join('')}</ul>`:''}
-    ${s.cues&&s.cues.length?`<span class="sub">Những chi tiết đáng chú ý</span><p style="font-size:.9rem;color:var(--ink-2)">${{ok:'Lúc đầu nhóm thấy bình thường — rất dễ hiểu, vì những chuyện thế này thường bắt đầu rất thân thiện. Cùng nhìn lại:',odd:'Lúc đầu nhóm đã thấy hơi lạ — hãy tin vào cảm giác đó! Đây là những chi tiết tạo ra cảm giác ấy:',unsure:'Lúc đầu nhóm chưa chắc — và dừng lại để suy nghĩ là đúng. Những chi tiết giúp nhóm quyết định:'}[P.gut]||''}</p><ul class="cues">${s.cues.map(c=>`<li>${I('flag')}<span>${esc(c)}</span></li>`).join('')}</ul>`:''}
+    ${P.why.size?`<span class="sub">Về lý do của nhóm</span><ul class="refl">${REASONS.filter(r=>P.why.has(r[0])).map(r=>`<li><b>${esc(r[1])}</b>${esc(r[2])}</li>`).join('')}</ul>`:''}
+    ${s.cues&&s.cues.length?`<span class="sub">Những điều cần để ý</span><p style="font-size:.9rem;color:var(--ink-2)">${{ok:'Lúc đầu nhóm thấy bình thường. Không sao cả — chuyện kiểu này hay bắt đầu rất thân thiện. Cùng xem lại:',odd:'Lúc đầu nhóm thấy hơi lạ. Cảm giác đó đúng đấy! Vì có những điều này:',unsure:'Lúc đầu nhóm chưa biết. Dừng lại để nghĩ là đúng rồi. Những điều này giúp nhóm biết:'}[P.gut]||''}</p><ul class="cues">${s.cues.map(c=>`<li>${I('flag')}<span>${esc(c)}</span></li>`).join('')}</ul>`:''}
     ${s.tip?`<div class="callout tip"><b class="t">Mẹo</b>${esc(s.tip)}</div>`:''}
     ${s.note?`<div class="callout note"><b class="t">Quan trọng</b>${esc(s.note)}</div>`:''}
     <p class="muted" style="font-size:.8rem;margin-top:16px;font-weight:600">KỸ NĂNG NHÓM VỪA LUYỆN</p>${dimsHTML(R.d)}
-    ${s.wi?`<div class="callout" style="background:var(--river-2)"><b class="t" style="color:var(--river)">Thử nghĩ thêm: nếu… thì sao?</b>${esc(s.wi)}</div>`:''}
+    ${s.wi?`<div class="callout" style="background:var(--river-2)"><b class="t" style="color:var(--river)">Câu hỏi thêm cho nhóm</b>${esc(s.wi)}</div>`:''}
     <div class="callout" style="background:var(--surface-2)"><div class="ci">${I('heart')}<span>Dù chọn gì, nếu ai đó làm em khó chịu thì <b>lỗi thuộc về người đó</b>. Rời khỏi tình huống không an toàn luôn là lựa chọn đúng.</span></div></div></div>`;
   dock(`<button class="btn btn-primary btn-block" onclick="next()">Ai có thể giúp? ${ARROW}</button>`);
 }
